@@ -2,15 +2,15 @@ const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 const blogRoutes=require('./routes/blogRoutes')
+const dotenv=require('dotenv').config();
 
 
 const app = express();
 
-const dbURI =
-  "mongodb+srv://blogify:test1234@cluster0.ib1ak4i.mongodb.net/node-tuts?retryWrites=true&w=majority";
+
   
 mongoose
-  .connect(dbURI)
+  .connect(process.env.ENV)
   .then((result) => {
     console.log("Connected to DB");
     app.listen(3000);
